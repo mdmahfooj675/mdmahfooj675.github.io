@@ -1,0 +1,2696 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Md Mahfooj Alam - Aspiring AI/ML Engineer & B.Tech CSE (AI & ML) Student. Portfolio showcasing neural networks, generative AI agents, and DSA expertise." />
+  <title>Md Mahfooj Alam | AI/ML Engineer &amp; Neural Systems Builder</title>
+
+  <!-- Google Fonts: Space Grotesk, Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- FontAwesome CDN Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    /* ==========================================================================
+       1. COSMIC NEURAL DESIGN TOKENS & VARIABLES
+       ========================================================================== */
+    :root {
+      --bg-obsidian: #05050a;
+      --bg-deep: #090a14;
+      --bg-glass: rgba(14, 16, 28, 0.65);
+      --bg-glass-strong: rgba(18, 21, 38, 0.85);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(0, 245, 212, 0.35);
+
+      /* Multi-Stop Electric Palette */
+      --cyan: #00f5d4;
+      --cyan-dim: rgba(0, 245, 212, 0.14);
+      --violet: #8b5cf6;
+      --violet-dim: rgba(139, 92, 246, 0.16);
+      --magenta: #f43f5e;
+      --sky: #38bdf8;
+
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* Custom Property for Conic Border Angle Animation */
+    @property --border-angle {
+      syntax: '<angle>';
+      initial-value: 0deg;
+      inherits: false;
+    }
+
+    /* ==========================================================================
+       2. RESET, BASE & AMBIENT CANVAS LAYERS
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      background-color: var(--bg-obsidian);
+    }
+
+    body {
+      background-color: var(--bg-obsidian);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      line-height: 1.65;
+      overflow-x: hidden;
+      position: relative;
+      selection-background-color: var(--cyan);
+    }
+
+    ::selection {
+      background: rgba(0, 245, 212, 0.28);
+      color: #ffffff;
+    }
+
+    /* Full-Viewport Synaptic Neural Canvas */
+    #neuralCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -3;
+      pointer-events: none;
+    }
+
+    /* Subtle Tech Grid Overlay */
+    .cyber-grid {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 52px 52px;
+      mask-image: radial-gradient(ellipse 85% 75% at 50% 25%, #000 50%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 25%, #000 50%, transparent 100%);
+      pointer-events: none;
+    }
+
+    /* Morphing Ambient Mesh Auroras */
+    .aurora-layer {
+      position: fixed;
+      inset: 0;
+      z-index: -4;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .aurora-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(130px);
+      opacity: 0.45;
+      animation: auroraMorph 18s ease-in-out infinite alternate;
+    }
+
+    .aurora-1 {
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle, rgba(0, 245, 212, 0.25), transparent 70%);
+      top: -140px;
+      left: -100px;
+    }
+
+    .aurora-2 {
+      width: 580px;
+      height: 580px;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.26), transparent 70%);
+      top: 20%;
+      right: -160px;
+      animation-delay: -6s;
+    }
+
+    .aurora-3 {
+      width: 460px;
+      height: 460px;
+      background: radial-gradient(circle, rgba(244, 63, 94, 0.16), transparent 70%);
+      bottom: -120px;
+      left: 25%;
+      animation-delay: -12s;
+    }
+
+    @keyframes auroraMorph {
+      0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+      50% { transform: translate(40px, -30px) scale(1.12) rotate(12deg); }
+      100% { transform: translate(-30px, 35px) scale(0.95) rotate(-10deg); }
+    }
+
+    /* Trailing Ambient Cursor Spotlight */
+    .cursor-spotlight {
+      position: fixed;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 245, 212, 0.08) 0%, rgba(139, 92, 246, 0.04) 40%, transparent 70%);
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      transition: opacity 0.4s ease;
+    }
+
+    /* Top Scroll-Driven Neon Progress Bar */
+    .scroll-progress-track {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      z-index: 2000;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .scroll-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--cyan), var(--violet), var(--magenta));
+      box-shadow: 0 0 12px var(--cyan);
+      transition: width 0.08s linear;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .section {
+      padding: 6.5rem 0;
+      position: relative;
+    }
+
+    .section-header {
+      margin-bottom: 3.5rem;
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--cyan);
+      background: linear-gradient(135deg, rgba(0, 245, 212, 0.12), rgba(139, 92, 246, 0.12));
+      border: 1px solid rgba(0, 245, 212, 0.28);
+      padding: 0.4rem 0.95rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+      box-shadow: 0 0 20px rgba(0, 245, 212, 0.1);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+    }
+
+    .section-subtitle {
+      color: var(--text-secondary);
+      max-width: 640px;
+      margin-top: 0.75rem;
+      font-size: 1.02rem;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--cyan) 0%, var(--sky) 45%, var(--violet) 85%, var(--magenta) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ==========================================================================
+       3. HOLOGRAPHIC GLASS CARDS & 3D TILT ENGINE
+       ========================================================================== */
+    .holo-card {
+      position: relative;
+      background: var(--bg-glass);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transform-style: preserve-3d;
+      will-change: transform;
+      transition: border-color 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+    }
+
+    /* Dynamic Cursor Specular Glare Sheen */
+    .holo-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(
+        480px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(0, 245, 212, 0.14),
+        rgba(139, 92, 246, 0.06) 40%,
+        transparent 75%
+      );
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .holo-card:hover::before {
+      opacity: 1;
+    }
+
+    .holo-card:hover {
+      border-color: rgba(0, 245, 212, 0.4);
+      background: rgba(18, 21, 38, 0.8);
+      box-shadow:
+        0 20px 45px -15px rgba(0, 0, 0, 0.75),
+        0 0 28px -8px rgba(0, 245, 212, 0.22),
+        0 0 38px -12px rgba(139, 92, 246, 0.2);
+    }
+
+    .holo-card > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Animated Conic Gradient Border Card */
+    .conic-glow-box {
+      position: relative;
+      border-radius: var(--radius-lg);
+      padding: 1.5px;
+      background: conic-gradient(
+        from var(--border-angle),
+        var(--cyan),
+        var(--violet),
+        var(--magenta),
+        var(--sky),
+        var(--cyan)
+      );
+      animation: spinBorder 6s linear infinite;
+      box-shadow: 0 24px 65px rgba(0, 0, 0, 0.75), 0 0 40px rgba(139, 92, 246, 0.18);
+    }
+
+    @keyframes spinBorder {
+      to { --border-angle: 360deg; }
+    }
+
+    /* ==========================================================================
+       4. MAGNETIC BUTTONS & INTERACTIVE CONTROLS
+       ========================================================================== */
+    .btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      padding: 0.85rem 1.65rem;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease, background 0.3s ease;
+      overflow: hidden;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--cyan) 0%, #22d3ee 50%, var(--violet) 100%);
+      background-size: 200% auto;
+      color: #030712;
+      box-shadow: 0 6px 26px rgba(0, 245, 212, 0.32);
+    }
+
+    .btn-primary:hover {
+      background-position: right center;
+      box-shadow: 0 10px 34px rgba(0, 245, 212, 0.48), 0 0 24px rgba(139, 92, 246, 0.35);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-primary);
+      border-color: rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--cyan);
+      background: rgba(0, 245, 212, 0.08);
+      box-shadow: 0 8px 25px rgba(0, 245, 212, 0.16);
+    }
+
+    /* ==========================================================================
+       5. STICKY GLASS NAVBAR
+       ========================================================================== */
+    .navbar {
+      position: fixed;
+      top: 3px;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(5, 5, 10, 0.75);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: var(--transition);
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 74px;
+    }
+
+    .nav-logo {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 1.18rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+
+    .nav-logo .bracket {
+      color: var(--cyan);
+    }
+
+    .nav-logo .dot-ai {
+      background: linear-gradient(90deg, var(--cyan), var(--violet));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.1rem;
+    }
+
+    .nav-link {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      position: relative;
+      padding: 0.4rem 0;
+      transition: color 0.25s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--text-primary);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--cyan), var(--violet));
+      border-radius: 2px;
+      transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+      box-shadow: 0 0 10px var(--cyan);
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .nav-icon-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      transition: var(--transition);
+    }
+
+    .nav-icon-btn:hover {
+      color: var(--cyan);
+      border-color: var(--cyan);
+      background: rgba(0, 245, 212, 0.1);
+      box-shadow: 0 0 18px rgba(0, 245, 212, 0.22);
+    }
+
+    .hamburger {
+      display: none;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-sm);
+      font-size: 1.15rem;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: rgba(9, 10, 20, 0.97);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 1.25rem 1.5rem 1.75rem;
+      gap: 0.9rem;
+    }
+
+    .mobile-menu.open {
+      display: flex;
+    }
+
+    .mobile-menu .nav-link {
+      font-size: 1.05rem;
+      padding: 0.5rem 0;
+    }
+
+    /* ==========================================================================
+       6. HERO SECTION + LIVE NEURAL TELEMETRY WIDGET
+       ========================================================================== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 108px;
+      padding-bottom: 4.5rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.22fr 0.88fr;
+      gap: 3.25rem;
+      align-items: center;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.45rem 1.05rem;
+      border-radius: 999px;
+      background: rgba(0, 245, 212, 0.08);
+      border: 1px solid rgba(0, 245, 212, 0.3);
+      color: var(--cyan);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      margin-bottom: 1.45rem;
+      box-shadow: 0 0 24px rgba(0, 245, 212, 0.14);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 12px var(--cyan);
+      animation: pulseRing 2s infinite;
+    }
+
+    @keyframes pulseRing {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 245, 212, 0.7); }
+      70% { transform: scale(1.1); box-shadow: 0 0 0 9px rgba(0, 245, 212, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 245, 212, 0); }
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5.2vw, 4rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+      margin-bottom: 1rem;
+    }
+
+    .typing-wrapper {
+      font-family: var(--font-mono);
+      font-size: clamp(1.05rem, 2.1vw, 1.35rem);
+      color: var(--cyan);
+      min-height: 2.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .typing-prompt {
+      color: var(--violet);
+      font-weight: 700;
+    }
+
+    .typing-cursor {
+      display: inline-block;
+      width: 2.5px;
+      height: 1.3em;
+      background: linear-gradient(180deg, var(--cyan), var(--violet));
+      animation: blinkCursor 0.85s infinite;
+    }
+
+    @keyframes blinkCursor {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+
+    .hero-desc {
+      color: var(--text-secondary);
+      font-size: 1.06rem;
+      max-width: 590px;
+      margin-bottom: 2.15rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2.6rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+    }
+
+    .stat-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.65rem 1.05rem;
+      border-radius: var(--radius-sm);
+      background: rgba(14, 16, 28, 0.72);
+      border: 1px solid var(--border-subtle);
+      backdrop-filter: blur(10px);
+      font-size: 0.86rem;
+      transition: var(--transition);
+    }
+
+    .stat-badge:hover {
+      border-color: rgba(139, 92, 246, 0.45);
+      transform: translateY(-2px);
+    }
+
+    .stat-badge i {
+      color: var(--cyan);
+      font-size: 1rem;
+    }
+
+    .stat-badge strong {
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+    }
+
+    /* Hero Neural Telemetry Terminal */
+    .terminal-inner {
+      background: #090b14;
+      border-radius: calc(var(--radius-lg) - 1.5px);
+      overflow: hidden;
+    }
+
+    .terminal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 1.25rem;
+      background: rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .terminal-dots {
+      display: flex;
+      gap: 0.45rem;
+    }
+
+    .terminal-dots span {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+    }
+
+    .dot-red { background: #f43f5e; }
+    .dot-yellow { background: #fbbf24; }
+    .dot-green { background: #00f5d4; }
+
+    .terminal-title {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .terminal-live-tag {
+      font-size: 0.68rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      background: rgba(0, 245, 212, 0.14);
+      color: var(--cyan);
+    }
+
+    .terminal-body {
+      padding: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.84rem;
+      line-height: 1.75;
+      color: #cbd5e1;
+      overflow-x: auto;
+    }
+
+    .code-kw { color: #c084fc; }
+    .code-cls { color: #38bdf8; }
+    .code-fn { color: #00f5d4; }
+    .code-str { color: #fde047; }
+    .code-num { color: #fb7185; }
+    .code-cmt { color: #64748b; }
+
+    /* Interactive Mini Neural Visualizer Bar inside Terminal */
+    .neural-telemetry {
+      border-top: 1px solid var(--border-subtle);
+      padding: 0.9rem 1.5rem;
+      background: rgba(0, 245, 212, 0.03);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+    }
+
+    .telemetry-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 4px;
+      height: 20px;
+    }
+
+    .telemetry-bars span {
+      width: 4px;
+      background: linear-gradient(180deg, var(--cyan), var(--violet));
+      border-radius: 2px;
+      animation: eqPulse 1.2s ease-in-out infinite alternate;
+    }
+
+    .telemetry-bars span:nth-child(1) { height: 40%; animation-delay: 0.1s; }
+    .telemetry-bars span:nth-child(2) { height: 95%; animation-delay: 0.3s; }
+    .telemetry-bars span:nth-child(3) { height: 65%; animation-delay: 0.5s; }
+    .telemetry-bars span:nth-child(4) { height: 100%; animation-delay: 0.2s; }
+    .telemetry-bars span:nth-child(5) { height: 55%; animation-delay: 0.4s; }
+    .telemetry-bars span:nth-child(6) { height: 85%; animation-delay: 0.6s; }
+
+    @keyframes eqPulse {
+      0% { transform: scaleY(0.35); opacity: 0.6; }
+      100% { transform: scaleY(1); opacity: 1; }
+    }
+
+    /* ==========================================================================
+       7. ABOUT & VISION SECTION
+       ========================================================================== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 2.25rem;
+      align-items: stretch;
+    }
+
+    .about-card {
+      padding: 2.35rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .about-text p {
+      color: var(--text-secondary);
+      margin-bottom: 1.2rem;
+      font-size: 1rem;
+    }
+
+    .about-text p strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .chess-callout {
+      margin-top: 1.35rem;
+      padding: 1.25rem 1.4rem;
+      border-left: 3px solid var(--violet);
+      background: linear-gradient(90deg, rgba(139, 92, 246, 0.12), rgba(0, 245, 212, 0.04));
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+
+    .chess-callout h4 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--cyan);
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .chess-callout p {
+      margin-bottom: 0;
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+    }
+
+    .vision-pillars {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .pillar-card {
+      padding: 1.6rem;
+    }
+
+    .pillar-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, rgba(0, 245, 212, 0.16), rgba(139, 92, 246, 0.16));
+      border: 1px solid rgba(0, 245, 212, 0.25);
+      color: var(--cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      margin-bottom: 0.95rem;
+    }
+
+    .pillar-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .pillar-card p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    /* ==========================================================================
+       8. CATEGORIZED BENTO SKILLS GRID
+       ========================================================================== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+
+    .skill-category-card {
+      padding: 2.1rem;
+    }
+
+    .skill-cat-header {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .skill-cat-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      background: linear-gradient(135deg, rgba(0, 245, 212, 0.18), rgba(139, 92, 246, 0.18));
+      border: 1px solid rgba(0, 245, 212, 0.3);
+      color: var(--cyan);
+      box-shadow: 0 0 20px rgba(0, 245, 212, 0.12);
+    }
+
+    .skill-cat-header h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+
+    .skill-tag {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      padding: 0.48rem 0.9rem;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.48rem;
+      transition: var(--transition);
+    }
+
+    .skill-tag i {
+      color: var(--violet);
+      transition: color 0.25s ease;
+    }
+
+    .skill-tag:hover {
+      border-color: var(--cyan);
+      background: rgba(0, 245, 212, 0.1);
+      color: var(--cyan);
+      transform: translateY(-2px);
+    }
+
+    .skill-tag:hover i {
+      color: var(--cyan);
+    }
+
+    /* ==========================================================================
+       9. INTERACTIVE PROJECTS SECTION + CASE STUDY MODAL
+       ========================================================================== */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 2.35rem;
+    }
+
+    .filter-btn {
+      padding: 0.58rem 1.3rem;
+      border-radius: 999px;
+      background: rgba(14, 16, 28, 0.7);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      font-family: var(--font-mono);
+      font-size: 0.84rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .filter-btn:hover {
+      color: var(--text-primary);
+      border-color: var(--cyan);
+    }
+
+    .filter-btn.active {
+      background: linear-gradient(135deg, var(--cyan), var(--violet));
+      color: #030712;
+      font-weight: 700;
+      border-color: transparent;
+      box-shadow: 0 4px 20px rgba(0, 245, 212, 0.3);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.85rem;
+    }
+
+    .project-card {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .project-card.hidden {
+      display: none;
+    }
+
+    .project-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+    }
+
+    .project-badge {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+
+    .badge-major {
+      background: rgba(0, 245, 212, 0.14);
+      color: var(--cyan);
+      border: 1px solid rgba(0, 245, 212, 0.32);
+    }
+
+    .badge-minor {
+      background: rgba(139, 92, 246, 0.16);
+      color: #c4b5fd;
+      border: 1px solid rgba(139, 92, 246, 0.35);
+    }
+
+    .badge-building {
+      background: rgba(244, 63, 94, 0.15);
+      color: #fda4af;
+      border: 1px solid rgba(244, 63, 94, 0.35);
+    }
+
+    .project-ext-icon {
+      color: var(--text-muted);
+      font-size: 1rem;
+      transition: transform 0.25s ease, color 0.25s ease;
+    }
+
+    .project-card:hover .project-ext-icon {
+      color: var(--cyan);
+      transform: translate(2px, -2px);
+    }
+
+    .project-title {
+      font-family: var(--font-display);
+      font-size: 1.24rem;
+      font-weight: 700;
+      margin-bottom: 0.7rem;
+      color: var(--text-primary);
+    }
+
+    .project-desc {
+      color: var(--text-secondary);
+      font-size: 0.93rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .project-footer {
+      display: flex;
+      flex-direction: column;
+      gap: 1.15rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .project-tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--cyan);
+      background: rgba(0, 245, 212, 0.08);
+      border: 1px solid rgba(0, 245, 212, 0.18);
+      padding: 0.26rem 0.65rem;
+      border-radius: 6px;
+    }
+
+    .project-cta-text {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--text-primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-weight: 600;
+    }
+
+    .project-card:hover .project-cta-text {
+      color: var(--cyan);
+    }
+
+    /* Project Case Study Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 4, 10, 0.84);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 2500;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+      animation: fadeModal 0.25s ease;
+    }
+
+    @keyframes fadeModal {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-box {
+      background: #0c0e1a;
+      border: 1px solid rgba(0, 245, 212, 0.35);
+      border-radius: var(--radius-lg);
+      max-width: 640px;
+      width: 100%;
+      padding: 2.35rem;
+      position: relative;
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.85), 0 0 40px rgba(139, 92, 246, 0.22);
+      animation: slideUpModal 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    @keyframes slideUpModal {
+      from { transform: translateY(20px) scale(0.97); opacity: 0; }
+      to { transform: translateY(0) scale(1); opacity: 1; }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.35rem;
+      right: 1.35rem;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-primary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .modal-close:hover {
+      background: rgba(244, 63, 94, 0.2);
+      border-color: var(--magenta);
+      color: var(--magenta);
+    }
+
+    .modal-title {
+      font-family: var(--font-display);
+      font-size: 1.55rem;
+      font-weight: 700;
+      margin: 0.8rem 0 0.9rem;
+    }
+
+    .modal-desc {
+      color: var(--text-secondary);
+      font-size: 0.96rem;
+      margin-bottom: 1.35rem;
+    }
+
+    .modal-highlights {
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 1.2rem 1.4rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-highlights h4 {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--cyan);
+      margin-bottom: 0.7rem;
+    }
+
+    .modal-highlights ul li {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+      padding-left: 1.25rem;
+      position: relative;
+    }
+
+    .modal-highlights ul li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--violet);
+      font-weight: 700;
+    }
+
+    .modal-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-top: 1.65rem;
+    }
+
+    /* ==========================================================================
+       10. SCROLL-DRIVEN ACHIEVEMENTS & CERTIFICATIONS TIMELINE
+       ========================================================================== */
+    .timeline-wrapper {
+      position: relative;
+      max-width: 850px;
+      margin: 0 auto;
+      padding-left: 2.5rem;
+    }
+
+    .timeline-track {
+      position: absolute;
+      left: 7px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 2px;
+    }
+
+    .timeline-progress-spine {
+      position: absolute;
+      left: 7px;
+      top: 8px;
+      width: 2px;
+      height: 0%;
+      background: linear-gradient(180deg, var(--cyan), var(--violet), var(--magenta));
+      box-shadow: 0 0 12px var(--cyan);
+      border-radius: 2px;
+      transition: height 0.15s ease-out;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 1.85rem;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -2.5rem;
+      top: 1.4rem;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--bg-obsidian);
+      border: 3px solid var(--violet);
+      box-shadow: 0 0 14px rgba(139, 92, 246, 0.5);
+      z-index: 2;
+    }
+
+    .timeline-item:first-child .timeline-dot {
+      border-color: var(--cyan);
+      box-shadow: 0 0 16px rgba(0, 245, 212, 0.7);
+    }
+
+    .timeline-card {
+      padding: 1.55rem 1.85rem;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .timeline-content h3 {
+      font-family: var(--font-display);
+      font-size: 1.12rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+
+    .timeline-issuer {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .timeline-issuer i {
+      color: var(--cyan);
+    }
+
+    .timeline-badge {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      padding: 0.32rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(139, 92, 246, 0.14);
+      border: 1px solid rgba(139, 92, 246, 0.32);
+      color: #c4b5fd;
+      white-space: nowrap;
+    }
+
+    .timeline-badge.highlight {
+      background: rgba(0, 245, 212, 0.14);
+      border-color: rgba(0, 245, 212, 0.35);
+      color: var(--cyan);
+      font-weight: 700;
+    }
+
+    /* ==========================================================================
+       11. CONTACT SECTION & FLOATING TOAST
+       ========================================================================== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 2.25rem;
+      align-items: start;
+    }
+
+    .contact-info-card {
+      padding: 2.35rem;
+    }
+
+    .contact-info-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-info-card p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .email-copy-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      background: rgba(5, 5, 10, 0.78);
+      border: 1px solid var(--border-subtle);
+      padding: 0.9rem 1.05rem;
+      border-radius: var(--radius-sm);
+      margin-bottom: 1.5rem;
+    }
+
+    .email-text {
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      color: var(--text-primary);
+      word-break: break-all;
+    }
+
+    .copy-btn {
+      padding: 0.48rem 0.9rem;
+      border-radius: 6px;
+      background: rgba(0, 245, 212, 0.14);
+      border: 1px solid rgba(0, 245, 212, 0.35);
+      color: var(--cyan);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      white-space: nowrap;
+      transition: var(--transition);
+    }
+
+    .copy-btn:hover {
+      background: var(--cyan);
+      color: #030712;
+    }
+
+    .copy-btn.copied {
+      background: var(--violet);
+      border-color: var(--violet);
+      color: #ffffff;
+    }
+
+    .social-links-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .social-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.95rem 1.2rem;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      transition: var(--transition);
+    }
+
+    .social-item:hover {
+      border-color: var(--cyan);
+      background: rgba(0, 245, 212, 0.07);
+      transform: translateX(5px);
+    }
+
+    .social-item-left {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .social-item-left i {
+      font-size: 1.25rem;
+      color: var(--cyan);
+    }
+
+    .contact-form-card {
+      padding: 2.35rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.3rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 500;
+      margin-bottom: 0.45rem;
+      color: var(--text-secondary);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.9rem 1.05rem;
+      border-radius: var(--radius-sm);
+      background: rgba(5, 5, 10, 0.82);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--cyan);
+      box-shadow: 0 0 0 3px rgba(0, 245, 212, 0.16);
+    }
+
+    textarea.form-control {
+      min-height: 128px;
+      resize: vertical;
+    }
+
+    .form-feedback {
+      margin-top: 1rem;
+      padding: 0.9rem 1.05rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      display: none;
+    }
+
+    .form-feedback.success {
+      display: block;
+      background: rgba(0, 245, 212, 0.12);
+      border: 1px solid rgba(0, 245, 212, 0.35);
+      color: var(--cyan);
+    }
+
+    .form-feedback.error {
+      display: block;
+      background: rgba(244, 63, 94, 0.12);
+      border: 1px solid rgba(244, 63, 94, 0.35);
+      color: #fda4af;
+    }
+
+    /* Floating Confirmation Toast */
+    .toast {
+      position: fixed;
+      bottom: 26px;
+      right: 26px;
+      background: #0c0e1a;
+      border: 1px solid var(--cyan);
+      color: var(--text-primary);
+      padding: 0.9rem 1.35rem;
+      border-radius: var(--radius-sm);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.75), 0 0 24px rgba(0, 245, 212, 0.22);
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 0.9rem;
+      z-index: 3000;
+      transform: translateY(130%);
+      opacity: 0;
+      transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .toast i {
+      color: var(--cyan);
+      font-size: 1.05rem;
+    }
+
+    .footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 2.35rem 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .footer span {
+      color: var(--cyan);
+      font-family: var(--font-mono);
+    }
+
+    /* Staggered Scroll Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ==========================================================================
+       12. RESPONSIVE & ACCESSIBILITY (prefers-reduced-motion)
+       ========================================================================== */
+    @media (max-width: 980px) {
+      .hero-grid,
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid,
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links,
+      .nav-actions {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .section {
+        padding: 4.75rem 0;
+      }
+
+      .skills-grid,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cursor-spotlight {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .cursor-spotlight, .aurora-blob {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress-track" aria-hidden="true">
+    <div class="scroll-progress-fill" id="scrollProgress"></div>
+  </div>
+
+  <!-- Ambient Neural Canvas, Aurora Meshes & Cursor Spotlight -->
+  <div class="aurora-layer" aria-hidden="true">
+    <div class="aurora-blob aurora-1"></div>
+    <div class="aurora-blob aurora-2"></div>
+    <div class="aurora-blob aurora-3"></div>
+  </div>
+  <canvas id="neuralCanvas" aria-hidden="true"></canvas>
+  <div class="cyber-grid" aria-hidden="true"></div>
+  <div class="cursor-spotlight" id="cursorSpotlight" aria-hidden="true"></div>
+
+  <!-- ========================================================================
+       STICKY NAVBAR
+       ======================================================================== -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#home" class="nav-logo">
+        <span class="bracket">&lt;</span>Mahfooj<span class="dot-ai">.ai</span><span class="bracket">/&gt;</span>
+      </a>
+
+      <nav aria-label="Primary Navigation">
+        <ul class="nav-links">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#achievements" class="nav-link">Achievements</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="https://github.com/mdmahfooj675" target="_blank" rel="noopener noreferrer" class="nav-icon-btn magnetic" aria-label="GitHub Profile" title="GitHub">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <a href="https://linkedin.com/in/mahfooj" target="_blank" rel="noopener noreferrer" class="nav-icon-btn magnetic" aria-label="LinkedIn Profile" title="LinkedIn">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+      </div>
+
+      <button class="hamburger" id="hamburgerBtn" aria-label="Toggle Menu" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#home" class="nav-link mobile-link">Home</a>
+      <a href="#about" class="nav-link mobile-link">About</a>
+      <a href="#skills" class="nav-link mobile-link">Skills</a>
+      <a href="#projects" class="nav-link mobile-link">Projects</a>
+      <a href="#achievements" class="nav-link mobile-link">Achievements</a>
+      <a href="#contact" class="nav-link mobile-link">Contact</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ======================================================================
+         HERO SECTION
+         ====================================================================== -->
+    <section id="home" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="status-pill">
+            <span class="status-dot"></span>
+            <span class="scramble-text" data-text="OPEN TO 4TH-SEM AI/ML & SWE INTERNSHIPS">OPEN TO 4TH-SEM AI/ML &amp; SWE INTERNSHIPS</span>
+          </div>
+
+          <h1 class="hero-title">
+            Hi, I'm <span class="gradient-text scramble-text" data-text="Md Mahfooj Alam">Md Mahfooj Alam</span>
+          </h1>
+
+          <div class="typing-wrapper" aria-live="polite">
+            <span class="typing-prompt">~$</span>
+            <span id="typingText"></span>
+            <span class="typing-cursor"></span>
+          </div>
+
+          <p class="hero-desc">
+            Aspiring AI/ML Engineer &amp; B.Tech CSE (AI &amp; ML) undergraduate at IES College of Technology, Bhopal. Focused on building scalable machine learning systems, generative AI agents, and solving complex algorithmic problems.
+          </p>
+
+          <div class="hero-cta">
+            <a href="#projects" class="btn btn-primary magnetic">
+              <i class="fa-solid fa-code-branch"></i> Explore Projects
+            </a>
+            <a href="#contact" class="btn btn-secondary magnetic">
+              <i class="fa-regular fa-paper-plane"></i> Get In Touch
+            </a>
+          </div>
+
+          <div class="hero-badges">
+            <div class="stat-badge">
+              <i class="fa-solid fa-award"></i>
+              <span><strong>9.13 SGPA</strong> | Branch Topper</span>
+            </div>
+            <div class="stat-badge">
+              <i class="fa-solid fa-ranking-star"></i>
+              <span><strong>3rd Rank</strong> College-Wide</span>
+            </div>
+            <div class="stat-badge">
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Bhopal, India</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Animated Conic-Gradient Border Neural Telemetry Widget -->
+        <div class="conic-glow-box tilt-card" data-tilt-max="7">
+          <div class="terminal-inner">
+            <div class="terminal-header">
+              <div class="terminal-dots">
+                <span class="dot-red"></span>
+                <span class="dot-yellow"></span>
+                <span class="dot-green"></span>
+              </div>
+              <div class="terminal-title">
+                neural_agent.py <span class="terminal-live-tag">ACTIVE</span>
+              </div>
+            </div>
+            <div class="terminal-body">
+<pre><code><span class="code-kw">class</span> <span class="code-cls">AIMLEngineer</span>:
+    <span class="code-kw">def</span> <span class="code-fn">__init__</span>(self):
+        self.name = <span class="code-str">"Md Mahfooj Alam"</span>
+        self.role = <span class="code-str">"Aspiring AI/ML Engineer"</span>
+        self.campus = <span class="code-str">"IES College, Bhopal (RGPV)"</span>
+        self.sgpa = <span class="code-num">9.13</span>
+        self.rank = <span class="code-str">"Branch Topper | #3 College"</span>
+
+    <span class="code-kw">def</span> <span class="code-fn">architect_system</span>(self):
+        <span class="code-kw">return</span> {
+            <span class="code-str">"ai_ml"</span>: [<span class="code-str">"Python"</span>, <span class="code-str">"Neural Nets"</span>, <span class="code-str">"GenAI"</span>],
+            <span class="code-str">"dsa"</span>: [<span class="code-str">"Java"</span>, <span class="code-str">"C++"</span>],
+            <span class="code-str">"target"</span>: <span class="code-str">"4th-Sem AI/ML Internship"</span>
+        }</code></pre>
+            </div>
+            <div class="neural-telemetry">
+              <span style="color: var(--cyan);"><i class="fa-solid fa-wave-square"></i> SYNAPTIC ENGINE // 60 FPS</span>
+              <div class="telemetry-bars" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         ABOUT & VISION SECTION
+         ====================================================================== -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag"><i class="fa-solid fa-user-astronaut"></i> 01 // ABOUT &amp; VISION</span>
+          <h2 class="section-title">Engineering Intelligence with Algorithmic Rigor</h2>
+          <p class="section-subtitle">
+            Bridging deep computer science fundamentals with modern neural architectures to build reliable AI products.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="holo-card tilt-card about-card reveal">
+            <div class="about-text">
+              <p>
+                I am a <strong>B.Tech Computer Science (Artificial Intelligence &amp; Machine Learning)</strong> student at <strong>IES College of Technology, Bhopal (RGPV)</strong>, currently holding a <strong>9.13 SGPA</strong> as the <strong>Branch Topper</strong> and <strong>3rd Rank College-Wide</strong>.
+              </p>
+              <p>
+                My technical foundation combines <strong>AI/ML engineering in Python</strong> with disciplined <strong>Data Structures &amp; Algorithms in Java</strong>. Rather than treating AI models as black boxes, I focus on data preprocessing, optimization mechanics, and clean software architecture.
+              </p>
+              <p>
+                Currently, I am developing context-aware Generative AI workflows and preparing for <strong>4th-semester AI/ML and Software Engineering internships</strong> where I can help ship impactful, real-world intelligent systems.
+              </p>
+            </div>
+
+            <div class="chess-callout">
+              <h4><i class="fa-solid fa-chess-knight"></i> Strategic Thinking &amp; Chess</h4>
+              <p>
+                Beyond coding, playing chess sharpens my pattern recognition, multi-step lookahead, and calm decision-making under constraints—habits I bring directly into algorithm design and system debugging.
+              </p>
+            </div>
+          </div>
+
+          <div class="vision-pillars reveal">
+            <div class="holo-card tilt-card pillar-card">
+              <div class="pillar-icon"><i class="fa-solid fa-brain"></i></div>
+              <h3>Scalable AI &amp; Neural Systems</h3>
+              <p>Designing and training machine learning models and RAG-powered generative AI agents that solve real, measurable problems.</p>
+            </div>
+
+            <div class="holo-card tilt-card pillar-card">
+              <div class="pillar-icon"><i class="fa-solid fa-microchip"></i></div>
+              <h3>Strong Algorithmic Core</h3>
+              <p>Practicing Data Structures and Algorithms in Java and C++ to write low-latency, maintainable, and cleanly structured code.</p>
+            </div>
+
+            <div class="holo-card tilt-card pillar-card">
+              <div class="pillar-icon"><i class="fa-solid fa-rocket"></i></div>
+              <h3>Continuous Builder Mindset</h3>
+              <p>Turning theoretical ML concepts into working tools—from neural digit classifiers to custom AI learning assistants.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         CATEGORIZED BENTO SKILLS GRID
+         ====================================================================== -->
+    <section id="skills" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag"><i class="fa-solid fa-layer-group"></i> 02 // TECH STACK</span>
+          <h2 class="section-title">Technical Skills &amp; Tooling</h2>
+          <p class="section-subtitle">
+            Structured across machine learning ecosystems, core algorithmic languages, and modern developer workflows.
+          </p>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Category 1 -->
+          <div class="holo-card tilt-card skill-category-card reveal">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon"><i class="fa-solid fa-robot"></i></div>
+              <h3>AI / ML &amp; Backend</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-tag"><i class="fa-brands fa-python"></i> Python</span>
+              <span class="skill-tag"><i class="fa-solid fa-table-cells"></i> NumPy</span>
+              <span class="skill-tag"><i class="fa-solid fa-network-wired"></i> Neural Networks</span>
+              <span class="skill-tag"><i class="fa-solid fa-wand-magic-sparkles"></i> Generative AI</span>
+              <span class="skill-tag"><i class="fa-solid fa-terminal"></i> Prompt Engineering</span>
+            </div>
+          </div>
+
+          <!-- Category 2 -->
+          <div class="holo-card tilt-card skill-category-card reveal">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon"><i class="fa-solid fa-code"></i></div>
+              <h3>Core Programming &amp; DSA</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-tag"><i class="fa-brands fa-java"></i> Java (DSA)</span>
+              <span class="skill-tag"><i class="fa-solid fa-c"></i> C++</span>
+              <span class="skill-tag"><i class="fa-solid fa-sitemap"></i> Data Structures</span>
+              <span class="skill-tag"><i class="fa-solid fa-gears"></i> Algorithms &amp; OOP</span>
+            </div>
+          </div>
+
+          <!-- Category 3 -->
+          <div class="holo-card tilt-card skill-category-card reveal">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon"><i class="fa-solid fa-wrench"></i></div>
+              <h3>Developer Tools</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-tag"><i class="fa-brands fa-git-alt"></i> Git</span>
+              <span class="skill-tag"><i class="fa-brands fa-github"></i> GitHub</span>
+              <span class="skill-tag"><i class="fa-brands fa-apple"></i> macOS Terminal</span>
+              <span class="skill-tag"><i class="fa-solid fa-bolt"></i> AI-Assisted Workflows</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         INTERACTIVE PROJECTS SECTION
+         ====================================================================== -->
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag"><i class="fa-solid fa-folder-open"></i> 03 // FEATURED WORK</span>
+          <h2 class="section-title">Projects &amp; Neural Builds</h2>
+          <p class="section-subtitle">
+            Filter by engineering domain or click any holographic card to inspect its architecture case study.
+          </p>
+        </div>
+
+        <div class="filter-bar reveal" role="group" aria-label="Filter projects">
+          <button class="filter-btn active" data-filter="all">All Projects</button>
+          <button class="filter-btn" data-filter="ai-ml">AI &amp; ML</button>
+          <button class="filter-btn" data-filter="core-logic">Core Logic</button>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <article class="holo-card tilt-card project-card reveal" data-category="ai-ml" data-project="digit-recognition" tabindex="0" role="button" aria-label="View case study for Digit Recognition using Neural Networks">
+            <div>
+              <div class="project-top">
+                <span class="project-badge badge-major">Major Project</span>
+                <i class="fa-solid fa-arrow-up-right-from-square project-ext-icon"></i>
+              </div>
+              <h3 class="project-title">Digit Recognition using Neural Networks</h3>
+              <p class="project-desc">
+                Built and trained a neural network model to accurately classify handwritten digits, focusing on preprocessing, model evaluation, and optimization.
+              </p>
+            </div>
+            <div class="project-footer">
+              <div class="project-tags">
+                <span class="project-tag">Python</span>
+                <span class="project-tag">Neural Networks</span>
+                <span class="project-tag">Machine Learning</span>
+              </div>
+              <span class="project-cta-text">Inspect Case Study <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="holo-card tilt-card project-card reveal" data-category="core-logic" data-project="chatbot" tabindex="0" role="button" aria-label="View case study for Rule-Based Conversational Chatbot">
+            <div>
+              <div class="project-top">
+                <span class="project-badge badge-minor">Minor Project</span>
+                <i class="fa-solid fa-arrow-up-right-from-square project-ext-icon"></i>
+              </div>
+              <h3 class="project-title">Rule-Based Conversational Chatbot</h3>
+              <p class="project-desc">
+                Engineered a structured conversational agent capable of handling pattern-matched user queries and automated responses.
+              </p>
+            </div>
+            <div class="project-footer">
+              <div class="project-tags">
+                <span class="project-tag">Python</span>
+                <span class="project-tag">NLP Basics</span>
+                <span class="project-tag">Logic Design</span>
+              </div>
+              <span class="project-cta-text">Inspect Case Study <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="holo-card tilt-card project-card reveal" data-category="ai-ml" data-project="learning-agent" tabindex="0" role="button" aria-label="View case study for Personal AI Learning Agent">
+            <div>
+              <div class="project-top">
+                <span class="project-badge badge-building">Currently Building</span>
+                <i class="fa-solid fa-arrow-up-right-from-square project-ext-icon"></i>
+              </div>
+              <h3 class="project-title">Personal AI Learning Agent</h3>
+              <p class="project-desc">
+                Developing a context-aware study assistant that indexes lecture notes and generates targeted DSA/Python practice questions.
+              </p>
+            </div>
+            <div class="project-footer">
+              <div class="project-tags">
+                <span class="project-tag">Python</span>
+                <span class="project-tag">GenAI</span>
+                <span class="project-tag">RAG Workflow</span>
+              </div>
+              <span class="project-cta-text">Inspect Case Study <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         ACHIEVEMENTS & CERTIFICATIONS TIMELINE
+         ====================================================================== -->
+    <section id="achievements" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag"><i class="fa-solid fa-trophy"></i> 04 // MILESTONES</span>
+          <h2 class="section-title">Achievements &amp; Certifications</h2>
+          <p class="section-subtitle">
+            Academic excellence, technical workshops at MANIT Bhopal, and verified industry credentials.
+          </p>
+        </div>
+
+        <div class="timeline-wrapper" id="timelineWrapper">
+          <div class="timeline-track"></div>
+          <div class="timeline-progress-spine" id="timelineSpine"></div>
+
+          <!-- Milestone 1 -->
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="holo-card tilt-card timeline-card">
+              <div class="timeline-content">
+                <h3>Branch Topper &amp; 3rd Rank College-Wide (9.13 SGPA)</h3>
+                <div class="timeline-issuer">
+                  <i class="fa-solid fa-graduation-cap"></i> IES College of Technology, Bhopal (RGPV)
+                </div>
+              </div>
+              <span class="timeline-badge highlight">9.13 SGPA</span>
+            </div>
+          </div>
+
+          <!-- Milestone 2 -->
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="holo-card tilt-card timeline-card">
+              <div class="timeline-content">
+                <h3>Career Essentials in Generative AI</h3>
+                <div class="timeline-issuer">
+                  <i class="fa-brands fa-microsoft"></i> Microsoft &amp; LinkedIn
+                </div>
+              </div>
+              <span class="timeline-badge">Certification</span>
+            </div>
+          </div>
+
+          <!-- Milestone 3 -->
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="holo-card tilt-card timeline-card">
+              <div class="timeline-content">
+                <h3>CODECRUX 2.0 Data Structures &amp; Algorithms Workshop</h3>
+                <div class="timeline-issuer">
+                  <i class="fa-solid fa-building-columns"></i> MANIT Bhopal
+                </div>
+              </div>
+              <span class="timeline-badge">DSA Workshop</span>
+            </div>
+          </div>
+
+          <!-- Milestone 4 -->
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="holo-card tilt-card timeline-card">
+              <div class="timeline-content">
+                <h3>AUTOMAX Robotics Workshop</h3>
+                <div class="timeline-issuer">
+                  <i class="fa-solid fa-building-columns"></i> MANIT Bhopal
+                </div>
+              </div>
+              <span class="timeline-badge">Robotics</span>
+            </div>
+          </div>
+
+          <!-- Milestone 5 -->
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="holo-card tilt-card timeline-card">
+              <div class="timeline-content">
+                <h3>Soft Skill Development Certification</h3>
+                <div class="timeline-issuer">
+                  <i class="fa-solid fa-certificate"></i> NPTEL
+                </div>
+              </div>
+              <span class="timeline-badge">Verified</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         CONTACT SECTION
+         ====================================================================== -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag"><i class="fa-solid fa-satellite-dish"></i> 05 // CONNECT</span>
+          <h2 class="section-title">Let's Build Something Intelligent</h2>
+          <p class="section-subtitle">
+            Interested in discussing AI/ML internships, collaborative Python/Java builds, or generative AI systems? Reach out directly.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Direct Contact & One-Click Copy -->
+          <div class="holo-card tilt-card contact-info-card reveal">
+            <h3>Direct Channels</h3>
+            <p>
+              Copy my email address with one click or connect with me across GitHub and LinkedIn.
+            </p>
+
+            <div class="email-copy-box">
+              <span class="email-text" id="emailAddress">mdmahfooj675@gmail.com</span>
+              <button type="button" class="copy-btn" id="copyEmailBtn" aria-label="Copy email address">
+                <i class="fa-regular fa-copy"></i> <span>Copy Email</span>
+              </button>
+            </div>
+
+            <div class="social-links-list">
+              <a href="https://github.com/mdmahfooj675" target="_blank" rel="noopener noreferrer" class="social-item">
+                <div class="social-item-left">
+                  <i class="fa-brands fa-github"></i>
+                  <div>
+                    <strong>GitHub</strong>
+                    <div style="font-size: 0.82rem; color: var(--text-secondary);">github.com/mdmahfooj675</div>
+                  </div>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square" style="color: var(--text-muted); font-size: 0.85rem;"></i>
+              </a>
+
+              <a href="https://linkedin.com/in/mahfooj" target="_blank" rel="noopener noreferrer" class="social-item">
+                <div class="social-item-left">
+                  <i class="fa-brands fa-linkedin"></i>
+                  <div>
+                    <strong>LinkedIn</strong>
+                    <div style="font-size: 0.82rem; color: var(--text-secondary);">linkedin.com/in/mahfooj</div>
+                  </div>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square" style="color: var(--text-muted); font-size: 0.85rem;"></i>
+              </a>
+
+              <a href="mailto:mdmahfooj675@gmail.com" class="social-item">
+                <div class="social-item-left">
+                  <i class="fa-solid fa-envelope"></i>
+                  <div>
+                    <strong>Direct Mail</strong>
+                    <div style="font-size: 0.82rem; color: var(--text-secondary);">Launch default email client</div>
+                  </div>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square" style="color: var(--text-muted); font-size: 0.85rem;"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Interactive Contact Form -->
+          <div class="holo-card contact-form-card reveal">
+            <form id="contactForm" novalidate>
+              <div class="form-group">
+                <label for="senderName">Your Name</label>
+                <input type="text" id="senderName" class="form-control" placeholder="e.g., Ananya Verma" required />
+              </div>
+
+              <div class="form-group">
+                <label for="senderEmail">Your Email</label>
+                <input type="email" id="senderEmail" class="form-control" placeholder="e.g., recruiter@company.com" required />
+              </div>
+
+              <div class="form-group">
+                <label for="senderMessage">Message</label>
+                <textarea id="senderMessage" class="form-control" placeholder="Hi Mahfooj, I'd love to connect regarding an AI/ML internship opportunity..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary magnetic" style="width: 100%;">
+                <i class="fa-solid fa-paper-plane"></i> Send Message
+              </button>
+
+              <div id="formFeedback" class="form-feedback" role="alert"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>Engineered by <span>Md Mahfooj Alam</span> &bull; Aspiring AI/ML Engineer &bull; Bhopal, Madhya Pradesh, India</p>
+    </div>
+  </footer>
+
+  <!-- Project Case Study Modal -->
+  <div class="modal-backdrop" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-box">
+      <button class="modal-close" id="modalCloseBtn" aria-label="Close modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <span class="project-badge badge-major" id="modalBadge">Major Project</span>
+      <h3 class="modal-title" id="modalTitle">Project Title</h3>
+      <p class="modal-desc" id="modalDesc">Project description goes here.</p>
+
+      <div class="modal-highlights">
+        <h4>// SYSTEM ARCHITECTURE &amp; HIGHLIGHTS</h4>
+        <ul id="modalHighlightsList"></ul>
+      </div>
+
+      <div class="project-tags" id="modalTags"></div>
+
+      <div class="modal-actions">
+        <a href="https://github.com/mdmahfooj675" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          <i class="fa-brands fa-github"></i> View on GitHub
+        </a>
+        <button type="button" class="btn btn-secondary" id="modalDoneBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Toast Confirmation -->
+  <div class="toast" id="toastNotification" role="status" aria-live="polite">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toastMessage">Email copied to clipboard!</span>
+  </div>
+
+  <!-- ========================================================================
+       VANILLA JAVASCRIPT ENGINE (Neural Canvas, 3D Tilt, Scramble, Timeline)
+       ======================================================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* ----------------------------------------------------------------------
+         1. HIGH-DPI SYNAPTIC NEURAL NETWORK & DATA PACKET CANVAS
+         ---------------------------------------------------------------------- */
+      const canvas = document.getElementById('neuralCanvas');
+      const ctx = canvas.getContext('2d');
+      let width = 0;
+      let height = 0;
+      let dpr = Math.min(window.devicePixelRatio || 1, 2);
+      let particles = [];
+      let pulses = [];
+      const mouse = { x: -9999, y: -9999, radius: 170 };
+
+      function resizeCanvas() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        initParticles();
+      }
+
+      class NodeParticle {
+        constructor() {
+          this.x = Math.random() * width;
+          this.y = Math.random() * height;
+          this.vx = (Math.random() - 0.5) * 0.55;
+          this.vy = (Math.random() - 0.5) * 0.55;
+          this.baseRadius = Math.random() * 1.8 + 1.1;
+          this.phase = Math.random() * Math.PI * 2;
+          // Electric cyan or neural violet nodes
+          this.isCyan = Math.random() > 0.42;
+        }
+
+        update() {
+          this.phase += 0.03;
+          this.x += this.vx;
+          this.y += this.vy;
+
+          if (this.x < 0 || this.x > width) this.vx *= -1;
+          if (this.y < 0 || this.y > height) this.vy *= -1;
+
+          // Smooth cursor magnetic attraction/repulsion interplay
+          const dx = mouse.x - this.x;
+          const dy = mouse.y - this.y;
+          const dist = Math.hypot(dx, dy);
+          if (dist < mouse.radius && dist > 1) {
+            const force = (mouse.radius - dist) / mouse.radius;
+            this.x -= (dx / dist) * force * 1.35;
+            this.y -= (dy / dist) * force * 1.35;
+          }
+        }
+
+        draw() {
+          const r = this.baseRadius + Math.sin(this.phase) * 0.45;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, Math.max(0.6, r), 0, Math.PI * 2);
+          ctx.fillStyle = this.isCyan ? 'rgba(0, 245, 212, 0.78)' : 'rgba(139, 92, 246, 0.78)';
+          ctx.fill();
+        }
+      }
+
+      class DataPacket {
+        constructor(n1, n2) {
+          this.n1 = n1;
+          this.n2 = n2;
+          this.t = 0;
+          this.speed = 0.022 + Math.random() * 0.02;
+        }
+        update() {
+          this.t += this.speed;
+          return this.t < 1;
+        }
+        draw() {
+          const x = this.n1.x + (this.n2.x - this.n1.x) * this.t;
+          const y = this.n1.y + (this.n2.y - this.n1.y) * this.t;
+          ctx.beginPath();
+          ctx.arc(x, y, 2.2, 0, Math.PI * 2);
+          ctx.fillStyle = '#ffffff';
+          ctx.shadowBlur = 10;
+          ctx.shadowColor = '#00f5d4';
+          ctx.fill();
+          ctx.shadowBlur = 0;
+        }
+      }
+
+      function initParticles() {
+        const count = width < 768 ? 36 : Math.min(82, Math.floor((width * height) / 17500));
+        particles = [];
+        pulses = [];
+        for (let i = 0; i < count; i++) {
+          particles.push(new NodeParticle());
+        }
+      }
+
+      function animateNeuralCanvas() {
+        if (prefersReducedMotion) return;
+        ctx.clearRect(0, 0, width, height);
+
+        const maxLinkDist = width < 768 ? 115 : 148;
+
+        for (let i = 0; i < particles.length; i++) {
+          const p1 = particles[i];
+          p1.update();
+          p1.draw();
+
+          for (let j = i + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const dist = Math.hypot(p1.x - p2.x, p1.y - p2.y);
+
+            if (dist < maxLinkDist) {
+              const alpha = (1 - dist / maxLinkDist) * 0.24;
+              const grad = ctx.createLinearGradient(p1.x, p1.y, p2.x, p2.y);
+              grad.addColorStop(0, `rgba(0, 245, 212, ${alpha})`);
+              grad.addColorStop(1, `rgba(139, 92, 246, ${alpha})`);
+
+              ctx.beginPath();
+              ctx.moveTo(p1.x, p1.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.strokeStyle = grad;
+              ctx.lineWidth = 0.85;
+              ctx.stroke();
+
+              // Spawn occasional synaptic data packet
+              if (pulses.length < 18 && Math.random() < 0.0007) {
+                pulses.push(new DataPacket(p1, p2));
+              }
+            }
+          }
+
+          // Connect nodes directly to cursor when close
+          const mouseDist = Math.hypot(p1.x - mouse.x, p1.y - mouse.y);
+          if (mouseDist < mouse.radius) {
+            const mAlpha = (1 - mouseDist / mouse.radius) * 0.42;
+            ctx.beginPath();
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.strokeStyle = `rgba(0, 245, 212, ${mAlpha})`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+
+        // Update & draw traveling data packets
+        pulses = pulses.filter(pulse => {
+          const alive = pulse.update();
+          if (alive) pulse.draw();
+          return alive;
+        });
+
+        requestAnimationFrame(animateNeuralCanvas);
+      }
+
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+      if (!prefersReducedMotion) animateNeuralCanvas();
+
+      /* ----------------------------------------------------------------------
+         2. CURSOR SPOTLIGHT & MAGNETIC BUTTONS
+         ---------------------------------------------------------------------- */
+      const spotlight = document.getElementById('cursorSpotlight');
+
+      window.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+        if (spotlight && !prefersReducedMotion) {
+          spotlight.style.left = `${e.clientX}px`;
+          spotlight.style.top = `${e.clientY}px`;
+        }
+      });
+
+      window.addEventListener('mouseleave', () => {
+        mouse.x = -9999;
+        mouse.y = -9999;
+      });
+
+      // Magnetic pull effect on primary buttons & social icons
+      if (!prefersReducedMotion) {
+        document.querySelectorAll('.magnetic').forEach(el => {
+          el.addEventListener('mousemove', (e) => {
+            const rect = el.getBoundingClientRect();
+            const offsetX = e.clientX - (rect.left + rect.width / 2);
+            const offsetY = e.clientY - (rect.top + rect.height / 2);
+            el.style.transform = `translate(${offsetX * 0.22}px, ${offsetY * 0.25}px)`;
+          });
+
+          el.addEventListener('mouseleave', () => {
+            el.style.transform = 'translate(0px, 0px)';
+          });
+        });
+      }
+
+      /* ----------------------------------------------------------------------
+         3. 3D PERSPECTIVE TILT & HOLOGRAPHIC GLARE CARDS
+         ---------------------------------------------------------------------- */
+      if (!prefersReducedMotion) {
+        document.querySelectorAll('.tilt-card').forEach(card => {
+          const maxTilt = parseFloat(card.getAttribute('data-tilt-max')) || 6;
+
+          card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            // Update holographic specular radial highlight coordinates
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = ((y - centerY) / centerY) * -maxTilt;
+            const rotateY = ((x - centerX) / centerX) * maxTilt;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-4px)`;
+          });
+
+          card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+          });
+        });
+      }
+
+      /* ----------------------------------------------------------------------
+         4. CYBER-SCRAMBLE DECRYPTION & TYPEWRITER HERO
+         ---------------------------------------------------------------------- */
+      const cipherChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*';
+
+      function scrambleText(el) {
+        const originalText = el.getAttribute('data-text') || el.textContent;
+        if (prefersReducedMotion) {
+          el.textContent = originalText;
+          return;
+        }
+        let iteration = 0;
+        const interval = setInterval(() => {
+          el.textContent = originalText
+            .split('')
+            .map((char, idx) => {
+              if (char === ' ') return ' ';
+              if (idx < iteration) return originalText[idx];
+              return cipherChars[Math.floor(Math.random() * cipherChars.length)];
+            })
+            .join('');
+
+          if (iteration >= originalText.length) {
+            clearInterval(interval);
+            el.textContent = originalText;
+          }
+          iteration += 0.65;
+        }, 28);
+      }
+
+      document.querySelectorAll('.scramble-text').forEach((el, i) => {
+        setTimeout(() => scrambleText(el), i * 220);
+      });
+
+      // Fluid Role Typewriter
+      const phrases = [
+        'Aspiring AI/ML Engineer',
+        'DSA Problem Solver in Java',
+        'Python & GenAI Builder'
+      ];
+      const typingEl = document.getElementById('typingText');
+      let phraseIdx = 0;
+      let charIdx = 0;
+      let isDeleting = false;
+
+      function runTypewriter() {
+        const current = phrases[phraseIdx];
+        if (isDeleting) {
+          typingEl.textContent = current.substring(0, charIdx - 1);
+          charIdx--;
+        } else {
+          typingEl.textContent = current.substring(0, charIdx + 1);
+          charIdx++;
+        }
+
+        let delay = isDeleting ? 40 : 80;
+
+        if (!isDeleting && charIdx === current.length) {
+          delay = 1850;
+          isDeleting = true;
+        } else if (isDeleting && charIdx === 0) {
+          isDeleting = false;
+          phraseIdx = (phraseIdx + 1) % phrases.length;
+          delay = 320;
+        }
+
+        setTimeout(runTypewriter, delay);
+      }
+      runTypewriter();
+
+      /* ----------------------------------------------------------------------
+         5. SCROLL PROGRESS BAR, TIMELINE SPINE & ACTIVE NAV TRACKING
+         ---------------------------------------------------------------------- */
+      const scrollProgress = document.getElementById('scrollProgress');
+      const timelineWrapper = document.getElementById('timelineWrapper');
+      const timelineSpine = document.getElementById('timelineSpine');
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.nav-links .nav-link');
+
+      function handleScroll() {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        scrollProgress.style.width = `${scrollPercent}%`;
+
+        // Update Active Navbar Link
+        const checkPos = scrollTop + 140;
+        sections.forEach(sec => {
+          const top = sec.offsetTop;
+          const height = sec.offsetHeight;
+          const id = sec.getAttribute('id');
+          if (checkPos >= top && checkPos < top + height) {
+            navLinks.forEach(link => {
+              link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+            });
+          }
+        });
+
+        // Fill Glowing Achievements Timeline Spine on Scroll
+        if (timelineWrapper && timelineSpine) {
+          const rect = timelineWrapper.getBoundingClientRect();
+          const triggerPoint = window.innerHeight * 0.72;
+          const progress = Math.min(Math.max((triggerPoint - rect.top) / rect.height, 0), 1);
+          timelineSpine.style.height = `${progress * 100}%`;
+        }
+      }
+
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      handleScroll();
+
+      /* ----------------------------------------------------------------------
+         6. MOBILE HAMBURGER MENU
+         ---------------------------------------------------------------------- */
+      const hamburgerBtn = document.getElementById('hamburgerBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+
+      hamburgerBtn.addEventListener('click', () => {
+        const isOpen = mobileMenu.classList.toggle('open');
+        hamburgerBtn.setAttribute('aria-expanded', isOpen);
+        hamburgerBtn.innerHTML = isOpen
+          ? '<i class="fa-solid fa-xmark"></i>'
+          : '<i class="fa-solid fa-bars"></i>';
+      });
+
+      document.querySelectorAll('.mobile-link').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.remove('open');
+          hamburgerBtn.setAttribute('aria-expanded', 'false');
+          hamburgerBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+        });
+      });
+
+      /* ----------------------------------------------------------------------
+         7. STAGGERED INTERSECTION OBSERVER REVEAL
+         ---------------------------------------------------------------------- */
+      const revealEls = document.querySelectorAll('.reveal');
+      const revealObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.classList.add('visible');
+            }, index * 70);
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+      revealEls.forEach(el => revealObserver.observe(el));
+
+      /* ----------------------------------------------------------------------
+         8. PROJECT FILTERING & CASE STUDY MODAL
+         ---------------------------------------------------------------------- */
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const projectCards = document.querySelectorAll('.project-card');
+
+      filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterButtons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const filter = btn.getAttribute('data-filter');
+
+          projectCards.forEach(card => {
+            const cat = card.getAttribute('data-category');
+            card.classList.toggle('hidden', filter !== 'all' && filter !== cat);
+          });
+        });
+      });
+
+      const caseStudies = {
+        'digit-recognition': {
+          badge: 'Major Project',
+          badgeClass: 'badge-major',
+          title: 'Digit Recognition using Neural Networks',
+          desc: 'Built and trained a neural network model to accurately classify handwritten digits, focusing on preprocessing, model evaluation, and optimization.',
+          highlights: [
+            'Constructed input pixel normalization and tensor reshaping pipelines using Python and NumPy.',
+            'Trained multi-layer neural network weights with tuned activation functions and gradient optimization.',
+            'Analyzed validation accuracy and misclassified digit edge cases to strengthen model generalization.'
+          ],
+          tags: ['Python', 'Neural Networks', 'Machine Learning', 'NumPy']
+        },
+        'chatbot': {
+          badge: 'Minor Project',
+          badgeClass: 'badge-minor',
+          title: 'Rule-Based Conversational Chatbot',
+          desc: 'Engineered a structured conversational agent capable of handling pattern-matched user queries and automated responses.',
+          highlights: [
+            'Architected deterministic intent-recognition trees and keyword pattern matchers in Python.',
+            'Implemented input sanitization, fallback routing, and multi-turn conversational state handling.',
+            'Designed modular response dictionaries for rapid extensibility across new query domains.'
+          ],
+          tags: ['Python', 'NLP Basics', 'Logic Design']
+        },
+        'learning-agent': {
+          badge: 'Currently Building',
+          badgeClass: 'badge-building',
+          title: 'Personal AI Learning Agent',
+          desc: 'Developing a context-aware study assistant that indexes lecture notes and generates targeted DSA/Python practice questions.',
+          highlights: [
+            'Parses and chunks structured study notes into a local retrieval-augmented generation (RAG) workflow.',
+            'Enforces Socratic tutoring prompts to test algorithmic reasoning before revealing complete solutions.',
+            'Tracks weak concepts across study sessions to prioritize high-impact revision problems.'
+          ],
+          tags: ['Python', 'GenAI', 'RAG Workflow', 'Prompt Engineering']
+        }
+      };
+
+      const modal = document.getElementById('projectModal');
+      const modalBadge = document.getElementById('modalBadge');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalDesc = document.getElementById('modalDesc');
+      const modalHighlightsList = document.getElementById('modalHighlightsList');
+      const modalTags = document.getElementById('modalTags');
+
+      function openModal(key) {
+        const study = caseStudies[key];
+        if (!study) return;
+        modalBadge.textContent = study.badge;
+        modalBadge.className = `project-badge ${study.badgeClass}`;
+        modalTitle.textContent = study.title;
+        modalDesc.textContent = study.desc;
+        modalHighlightsList.innerHTML = study.highlights.map(h => `<li>${h}</li>`).join('');
+        modalTags.innerHTML = study.tags.map(t => `<span class="project-tag">${t}</span>`).join('');
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      projectCards.forEach(card => {
+        const key = card.getAttribute('data-project');
+        card.addEventListener('click', () => openModal(key));
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openModal(key);
+          }
+        });
+      });
+
+      document.getElementById('modalCloseBtn').addEventListener('click', closeModal);
+      document.getElementById('modalDoneBtn').addEventListener('click', closeModal);
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+      });
+
+      /* ----------------------------------------------------------------------
+         9. ONE-CLICK COPY EMAIL + FLOATING TOAST
+         ---------------------------------------------------------------------- */
+      const copyEmailBtn = document.getElementById('copyEmailBtn');
+      const emailAddress = document.getElementById('emailAddress').textContent.trim();
+      const toast = document.getElementById('toastNotification');
+      const toastMessage = document.getElementById('toastMessage');
+      let toastTimeout;
+
+      function triggerToast(message) {
+        toastMessage.textContent = message;
+        toast.classList.add('show');
+        clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => toast.classList.remove('show'), 3200);
+      }
+
+      copyEmailBtn.addEventListener('click', () => {
+        const temp = document.createElement('textarea');
+        temp.value = emailAddress;
+        temp.style.position = 'fixed';
+        temp.style.opacity = '0';
+        document.body.appendChild(temp);
+        temp.select();
+
+        try {
+          document.execCommand('copy');
+          copyEmailBtn.classList.add('copied');
+          copyEmailBtn.innerHTML = '<i class="fa-solid fa-check"></i> <span>Copied!</span>';
+          triggerToast('Copied mdmahfooj675@gmail.com to clipboard!');
+
+          setTimeout(() => {
+            copyEmailBtn.classList.remove('copied');
+            copyEmailBtn.innerHTML = '<i class="fa-regular fa-copy"></i> <span>Copy Email</span>';
+          }, 2500);
+        } catch (err) {
+          triggerToast('Email: ' + emailAddress);
+        } finally {
+          document.body.removeChild(temp);
+        }
+      });
+
+      /* ----------------------------------------------------------------------
+         10. CONTACT FORM VALIDATION & FEEDBACK
+         ---------------------------------------------------------------------- */
+      const contactForm = document.getElementById('contactForm');
+      const formFeedback = document.getElementById('formFeedback');
+
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('senderName').value.trim();
+        const email = document.getElementById('senderEmail').value.trim();
+        const message = document.getElementById('senderMessage').value.trim();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!name || !email || !message) {
+          formFeedback.className = 'form-feedback error';
+          formFeedback.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> Please complete all fields before sending.';
+          return;
+        }
+
+        if (!emailRegex.test(email)) {
+          formFeedback.className = 'form-feedback error';
+          formFeedback.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> Please enter a valid email address.';
+          return;
+        }
+
+        formFeedback.className = 'form-feedback success';
+        formFeedback.innerHTML = `<i class="fa-solid fa-circle-check"></i> Thank you, <strong>${name}</strong>! Your message has been received. You can also reach me directly at <strong>mdmahfooj675@gmail.com</strong>.`;
+        triggerToast('Message sent successfully!');
+        contactForm.reset();
+      });
+    });
+  </script>
+</body>
+</html>
